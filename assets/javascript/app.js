@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+$(".choice1, .choice2, .choice3, .choice4").hide();
+});
+
 var correct = 0;
 var incorrect = 0;
 
@@ -27,8 +31,9 @@ function countdown() {
 // Questions
 $('#startgame').on("click", function () {
     $(countdown);
-
+    $("#startgame").hide();
     $(questionOne).show();
+    $(".choice1, .choice2, .choice3, .choice4").show();
 
     function questionOne() {
 
@@ -182,15 +187,24 @@ function end() {
     if (incorrect > 5) {
         incorrect = 5;
 
+    $("#startgame").show();
     $("#countdown").hide();
     $("#question").hide();
     $(".choice1, .choice2, .choice3").hide();
     $(".choice4").hide();
 
-
         $("#incorrect").text("Incorrect " + incorrect);
         $("#correct").text("Correct " + correct);
 
+        $('#startgame').on("click", function () {
+            location.reload();
+            $(countdown);
+            $(questionOne).show();
+            $(".choice1, .choice2, .choice3, .choice4").show();
 
-        }
+            
+
+        })
+    }
+    
     }
